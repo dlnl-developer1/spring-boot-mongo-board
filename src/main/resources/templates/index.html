@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시판 목록</title>
+</head>
+<body>
+    <h1>게시판 목록</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>액션</th>
+        </tr>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.id}">ID</td>
+            <td th:text="${post.title}">제목</td>
+            <td th:text="${post.content}">내용</td>
+            <td>
+                <a th:href="@{/posts/edit/{id}(id=${post.id})}">수정</a> |
+                <a th:href="@{/posts/delete/{id}(id=${post.id})}">삭제</a>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <a href="/posts/new">새 글 쓰기</a>
+</body>
+</html>
